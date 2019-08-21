@@ -1,4 +1,4 @@
-const prefix = './data/';
+const prefix = '../data/';
 
 const files = require("./filestats")(prefix);
 const dictionary = require("./dict");
