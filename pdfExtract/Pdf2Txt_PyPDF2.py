@@ -1,34 +1,28 @@
-from os import path, walk
 from PyPDF2 import PdfFileReader
 
-def check_path(prompt):
-    abs_path = input(prompt)
-    while path.exists(abs_path) != True:
-        print("The specified path does not exist.")
-        abs_path = input(prompt)
-    return abs_path
+from fbasic import check_path, find_all_pdf, file_name_pdf2txt
 
-folder = check_path("Provide absolute path for the folder: ")
-fileList = []
 
-for root, dirs, files in walk(folder):
-    for filename in files:
-        if filename.endswith('.pdf'):
-            t = path.join(folder, filename)
-            fileList.append(t)
 
-for ifpath in fileList:
-    pdf = PdfFileReader(open(ifpath, 'rb'))
-    text = ''
-    for index in range(pdf.getNumPages()):
-        page = pdf.getPage(index)
-        text += page.extractText()
-    
-    head, tail = path.split(ifpath)
-    tail = tail.replace('.pdf', '.txt')
-    ofpath = head + '\\' + tail
-    print(ifpath + '\n-> ' + ofpath)
-        
-    ofile = open(ofpath, 'w', encoding = 'utf-8')
-    ofile.write(text)
-    ofile.close()
+if __name__ == '__main__':
+
+    # get pdf file iteration list
+    directory = check_path("Provide absolute path for the folder: ")
+    fileList = find_all_pdf(directory)
+
+    for ifpath in fileList:
+        # convert pdf into plain text
+        pdf = PdfFileReader(open(ifpath, 'rb'))
+        text = ''
+        for index in range(pdf.getNumPages()):
+            page = pdf.getPage(index)
+            text += page.extractText()
+
+        # get output file name
+        ofpath = file_name_pdf2txt(ifpath)
+        print(ifpath + '\n-> ' + ofpath)
+
+        # write data to file
+        ofile = open(ofpath, 'w', encoding = 'utf-8')
+        ofile.write(text)
+        ofile.close()
