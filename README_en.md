@@ -6,13 +6,30 @@ Topic #1: Trend analysis of AI techniques
 
 Language：`Javascript` & `Python`
 
+As a general report, technical reports are not included in this file. Details including environment configurations, requirements, directory-tree of KARMA, methods and interfaces, etc., see the KARMA Reference.
+
 ## Team
+
+- Wu Yusong `@bqsgwys` A THU sophomore majored in Electronic Engineering
+- Zhang Yichi `@YC-Vertex` A THU sophomore majored in Microelectronic Engineering
+- Ma Chengxiang `@mcxthuee` A THU sophomore majored in Microelectronic Engineering
 
 ## Problem Statement
 
 In recent years, Artificial Intelligence has reached a feverish pitch. We hope to visualize the rises and falls of AIML hot topics via Analyzing AIML-related papers. Thus illustrates the ever-changing trend of AI.
 
 ## Data Sources
+
+The database of papers is given by the organizer of the hackathon.
+All the papers, amounted to 4334, are from the public database of _arXiv_, distributed in the categories including cs:AI (Artificial Intelligence), cs:CV (Computer Vision), cs:CL (Computer Linguistics), cs:LG (Machine Learing in CST) and stat:ML (Machine Learing in Statistics).
+All papers are presented in PDF format.
+They contains basic infomation such as the title, the authors, the institution, the date of submission, etc., as well as the main body of the paper.
+
+The keywords are from the glossary edited by _WildML_, _Wikipedia_ and _Google Developers_. Links are shown below.
+
+- Deep Learning Glossary - WildML: http://www.wildml.com/deep-learning-glossary/
+- Glossary of AI - Wikipedia: https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence
+- Machine Learning Glossary - Google Developers: https://developers.google.com/machine-learning/glossary/
 
 ## Design & Methodology
 

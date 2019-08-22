@@ -3,32 +3,23 @@ import importlib
 importlib.reload(sys)
 from os import chdir, getcwd, listdir, path
 from time import strftime
+
 from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine, LTTextBoxHorizontal
 from pdfminer.pdfinterp import PDFTextExtractionNotAllowed
-"""
-接受输入的文件夹/文件路径，如果路径不存在输出相应报错信息，直到输入的路径存在
-:param: prompt -> abs_path: check approriate path and store it in abs_path
-:return: string: abs_path
-"""
-def check_path(prompt):
-    abs_path = input(prompt)
-    while path.exists(abs_path) != True:
-        print ("\nThe specified path does not exist.\n")
-        abs_path = input(prompt)
-    return abs_path   
 
-"""
-解析pdf文本，保存在txt文件中
-:param: name, name of every pdf file in the provided folder
-:return: none
-"""
+from fbasic import check_path, find_all_pdf, file_name_pdf2txt
 
 def parse(name):
+    """
+    解析pdf文本，保存在txt文件中
+    :param: name, name of every pdf file in the provided folder
+    :return: none
+    """
     #以二进制只读模式打开
-    fp = open(path,'rb')
+    fp = open(name,'rb')
     #用文件对象来创建一个PDF文档分析器
     parser = PDFParser(fp)
     #创建一个PDF文档
@@ -61,8 +52,9 @@ def parse(name):
         #只需获得LTTextBoxHorizontal即可获得所需的文字信息
         for x in layout:
             if(isinstance(x,LTTextBoxHorizontal)):
+                ofpath = file_name_pdf2txt(name)
                 #需要写出编码格式
-                with open(name,'a',encoding='utf-8') as out:
+                with open(ofpath,'a',encoding='utf-8') as out:
                     results = x.get_text()
                     out.write(results)
 
@@ -70,23 +62,10 @@ def parse(name):
    
 
 
+if __name__ == '__main__':
 
-print ("\n")
+    directory = check_path("Provide absolute path for the folder: ")
+    fileList = find_all_pdf(directory)
 
-folder = check_path("Provide absolute path for the folder: ")
-list=[]
-
-for root,dirs,files in walk(folder):
-    for filename in files:
-        if filename.endswith('.pdf'):
-            t=path.join(folder,filename)
-            list.append(t)
-
-for item in list:
-    path=item
-    head,tail=path.split(path)
-    var="\\"
-    tail=tail.replace(".pdf",".txt")
-    name=head+var+tail
-    content = ""
-    parse(name)
+    for ifpath in fileList:
+        parse(ifpath)
