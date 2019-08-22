@@ -2,3 +2,4 @@
 data
 txt_all_pypdf
 *__pycache__
+node_modules
