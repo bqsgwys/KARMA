@@ -1,6 +1,6 @@
 # KARMA - Keyword Analysis of Research on ML & AI
 
-Entry of VMW-THU-Hackathon @ Oct 2019
+Entry of VMW-THU-Hackathon @ Aug 2019
 
 Topic #1: Trend analysis of AI techniques
 
@@ -29,6 +29,8 @@ Topic #1: Trend analysis of AI techniques
 - 机器学习术语表 - Google Developers: https://developers.google.com/machine-learning/glossary/
 
 ## Design & Methodology 设计与方法论
+
+> Less is more. &emsp; -- Ludwig Mies van der Rohe
 
 **方法论**：我们希望通过最直接、有效、快速的方式获得所需信息，而非最炫技的方式。
 
