@@ -12,7 +12,7 @@ Topic #1: Trend analysis of AI techniques
 
 - 武钰淞 @ `bqsgwys`：清华大学电子系大二在读，大腿+大佬
 - 张亦弛 @ `YC-Vertex`：清华大学微纳电子系大二在读，软硬双修，软件开发经历相对较少，高中参加过许多科创hackathon
-- 马呈翔 @ `mcxthuee`：清华大学微纳电子系大二在读，方向未定，随心所欲~对软件和硬件都比较感兴趣，希望能通过此次hackathon学习到更多的知识，和大佬们做朋友~
+- 马呈翔 @ `mcxthuee`：清华大学微纳电子系大二在读，发展方向未定。对软件和硬件都比较感兴趣，希望能通过此次hackathon学习到更多的知识，和大佬们做朋友~
 
 ## Problem Statement 问题陈述
 
