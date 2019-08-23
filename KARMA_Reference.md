@@ -17,6 +17,33 @@ As a technical reference documentation, basic information of this project is not
 1. `yarn install`the Node.js Dependencies.
 1. Make sure your web broswer supports `ECMA2017`(`Firefox >= 67; Chrome >=75; Opera>=62; Safari>= 12`). Edge and IE MAY NOT display normally.
 
+## Usage
+
+### pdf file content extraction
+
+- Run `pdfExtract/GetPaperInfo.py` to extract paper basic info from target directory. Output files will be saved as `rawdata/info/info.json`
+- Run `pdfExtract/pdf2Txt_PyPDF2.py` to extract main body of papers in target directory. Output files will be saved in the same directory as pdf files.
+
+### creating keywords dictionary
+
+- Target keywords already exist in `analysis/keywordExtraction/dict.json`. Could be replaced by user-desired keywords.
+
+### keywords matching
+
+- Configure the configuration file `analysis/config.js`.
+  - `infoPrefix` should be the directory containing the info data.
+  - `infoList` should be the filename of the info data files.
+  - `dataList` should be the directories containing the text-files of papers.
+- Run `node index.js` to generate the `result.json` in root directory of the project. Network is required.
+
+### visualization
+
+- Copy `result.json` to `visualization/data`
+- In directory`visualization`, run `python3 -m http.server 3000` and the website can be visited in `http://localhost:3000`.
+- Click '+' button in the bottom-right corner to add a new info card to the canvas.
+- Type in target keywords and click search button to visualize the results
+- Use the move buttons to move the cards.
+
 ## Directory Tree
 
 ```tree
@@ -66,5 +93,3 @@ KARMA                                               //
 └─ yarn.lock                                       //
 
 ```
-
-## Methods and Interfaces
