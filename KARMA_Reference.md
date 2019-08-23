@@ -18,7 +18,7 @@ As a technical reference documentation, basic information of this project is not
 6. `yarn install`the Node.js Dependencies.
 7. Make sure your web broswer supports `ECMA2017`(`Firefox >= 67; Chrome >=75; Opera>=62; Safari>= 12`). Edge and IE MAY NOT display normally.
 
-*Note 1: if you would like to use the same dataset as we do, requirments labeled "optional_1" and "optional_2" could be ignored.*
+*Note 1: if you would like to use the same dataset as we do, requirments labeled "optional_1" and "optional_2" could be ignored.Our database could download from [HERE](https://cloud.tsinghua.edu.cn/f/ff6c72ba2d91454cba71/)*  
 *Note 2: if you would like to use pypdf2 instead of pdfminer, requirments labeled "optional_1" could be ignored.*
 
 ## Usage
