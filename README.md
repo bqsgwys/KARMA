@@ -92,3 +92,7 @@ For the given dataset of papers, keywords matching results showed great represen
 - [x] **Cross-Platform Compatibility**:
       We used high-cross-platform-compatibility languages, for instance HTML&CSS, JavaScript, and Python.
       In addition, we have done a considerable amount of work in reducing user configuration complexity.
+
+#### Homepage Preview
+
+![./homepage.png](homepage.png)
