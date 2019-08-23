@@ -4,9 +4,9 @@ Entry of VMW-THU-Hackathon @ Aug 2019
 
 Topic #1: Trend analysis of AI techniques
 
-Language：`Javascript` & `Python`
+Language：`Javascript`, `Python`, `HTML` & `CSS`
 
-As a general report, technical reports are not included in this file. Details including environment configurations, requirements, directory-tree of KARMA, methods and interfaces, etc., see the KARMA Reference.
+As a general report, detailed technical information is not included in this file. For details including environment configurations, requirements, directory-tree of KARMA, methods and interfaces, etc., see KARMA Reference (`KARMA Reference.md`).
 
 ## Team
 
