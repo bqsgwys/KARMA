@@ -6,7 +6,7 @@ Topic #1: Trend analysis of AI techniques
 
 Language：`Javascript`, `Python`, `HTML` & `CSS`
 
-As a technical reference documentation, basic information of this project is not included in this file. For general info including our team, the problem statement, over-all designs, project progress, results and discussion, etc., see KARMA Readme (`README.md`). 
+As a technical reference documentation, basic information of this project is not included in this file. For general info including our team, the problem statement, over-all designs, project progress, results and discussion, etc., **see KARMA Readme ([`README.md`](README.md)).**
 
 ## Environment Configuration 
 
