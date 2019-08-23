@@ -19,11 +19,11 @@ def find_index(info, pattern = '^\[cs\...\]$|^\[stat\...\]$'):
     return -1
 
 """
-将dict转换为json格式，并存储至info.json
+将dict转换为json格式，并存储至../rawdata/info/info.json
 :param: infoList -> List[Dict[str: str]]: output data
 """
 def save(infoList):
-    ofile = open('info.json', 'w')
+    ofile = open('../rawdata/info/info.json', 'w')
     txt = json.dumps(infoList, sort_keys = True, indent = 2, separators = (',', ': '))
     ofile.write(txt)
     ofile.close()
