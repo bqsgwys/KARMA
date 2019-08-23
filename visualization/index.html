@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Karma Visualizor</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="css/mdb.min.css" rel="stylesheet" />
+
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/babel">
+      function card(id) {
+        return (
+          <div
+            id={id + "Card"}
+            className="card"
+            style={{
+              width: "400px",
+              height: "360px"
+            }}
+            key={id}
+          >
+            <button
+              type="button"
+              className="btn btn-outline-info waves-effect move"
+              id="movex"
+            >
+              <i className="fas fa-arrows-alt" aria-hidden="true" id="movex" />
+            </button>
+            <i
+              className="fas fa-times close"
+              aria-hidden="true"
+              id={id + "Close"}
+            />
+            <div className="card-body">
+              <canvas id={id + "Canvas"} width="320" height="240" />
+              <div className="form-row align-items-center">
+                <div className="col-8">
+                  <label className="sr-only" htmlFor="inlineFormInputGroupMD">
+                    Keyword
+                  </label>
+                  <div className="md-form input-group mb-3">
+                    <input
+                      type="text"
+                      className="form-control pl-0 rounded-0"
+                      id={id + "Input"}
+                      placeholder="Keyword"
+                    />
+                  </div>
+                </div>
+                <div className="col-3">
+                  <button
+                    type="submit"
+                    className="btn btn-primary mb-0"
+                    id={id + "Button"}
+                  >
+                    <i className="fas fa-chart-line" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    </script>
+  </head>
+
+  <body>
+    <style>
+      #plus {
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        opacity: 0.5;
+        padding: 0;
+        bottom: 5px;
+        right: 5px;
+      }
+
+      .btn.btn-outline-info.waves-effect.move {
+        position: absolute;
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        opacity: 0.5;
+        padding: 0;
+        bottom: 5px;
+        right: 5px;
+      }
+
+      .fas.fa-times.close {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        opacity: 0.7;
+      }
+
+      .card {
+        padding: auto;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+      }
+
+      canvas {
+        margin: auto;
+        display: block;
+      }
+    </style>
+
+    <script type="text/babel">
+      $(document).ready(() => {
+        const set = [""];
+        var move = {};
+        let i = 0;
+        $("#plus").click(e => {
+          const domContainer = document.querySelector("#container");
+          set.push(card(++i + ""));
+          ReactDOM.render(<div>{set}</div>, domContainer);
+
+          $(`#${i}Close`).click(e => {
+            let x = parseInt(e.currentTarget.id);
+            set[x] = null;
+            ReactDOM.render(<div>{set}</div>, domContainer);
+          });
+          $(`#${i}Card`).mousedown(e => {
+            if (e.target.id === "movex") move[e.currentTarget.id] = true;
+          });
+          $(`#${i}Card`).mousemove(e => {
+            if (move[e.currentTarget.id]) {
+              let that = $("#" + e.currentTarget.id);
+              let top = e.pageY - 340 + "px";
+              let left = e.pageX - 380 + "px";
+              that.css({ top, left });
+            }
+          });
+          $(document).mouseup(() => {
+            move = {};
+          });
+        });
+      });
+    </script>
+
+    <div id="container" style="width:100vw; height:100vh"></div>
+
+    <button type="button" class="btn btn-outline-info waves-effect" id="plus">
+      <i class="fas fa-plus" aria-hidden="true"></i>
+    </button>
+  </body>
+</html>
