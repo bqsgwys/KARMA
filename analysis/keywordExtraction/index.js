@@ -41,6 +41,8 @@ try {
   for (let database of data)
     todoCount += database.length;
   console.log("Keyword Extraction:", "10%");
+
+  // match key words
   for (let databaseIndex in data) {
     for (let articleIndex in data[databaseIndex]) {
       const str = data[databaseIndex][articleIndex];
@@ -57,9 +59,11 @@ try {
       if (perc % 50 == 0) console.log("Keyword Extraction:", Math.round(perc * 0.9 + 1000) / 100 + "%");
     }
   }
+  // find unused pdf
   for (let doc in unused) {
     if (unused[doc]) unusedarr.push[doc];
   }
+  //make cache
   fs.writeFileSync(path.join(__dirname, "../cache/articles.json"), JSON.stringify(articles, "", "  "));
   fs.writeFileSync(path.join(__dirname, "../cache/unused.json"), JSON.stringify(unusedarr, "", "  "));
   fs.writeFileSync(path.join(__dirname, "../cache/keywords.json"), JSON.stringify(ret, "", "  "));

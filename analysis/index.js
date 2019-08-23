@@ -2,7 +2,7 @@ var trend = {}
 const keywords = require("./keywordExtraction").keywords;
 require("./infoExtraction")().then((info) => {
   var minday = 100000000000;
-
+  // relative date
   for (article in info) {
     info[article].day = Math.round(new Date(info[article].date) / 86400000);
     minday = Math.min(minday, info[article].day);
