@@ -4,43 +4,48 @@ Entry of VMW-THU-Hackathon @ Aug 2019
 
 Topic #1: Trend analysis of AI techniques
 
-编程语言：`Javascript`, `Python`, `HTML` & `CSS`
+Language：`Javascript`, `Python`, `HTML` & `CSS`
 
-本文件为项目的总体报告，具体技术细节（包括环境与依赖的配置、文件目录结构、文件使用方法、函数接口等）请详见技术文档`KARMA Reference.md`。
+As a general report, detailed technical information is not included in this file.
+For details including environment configurations, requirements, directory-tree of KARMA, methods and interfaces, etc., **see KARMA Reference ([`KARMA_Reference.md`](KARMA_Reference.md)).**
+For Chinese version of project report, **see KARMA Readme CH ([`README_ch.md`](README_ch.md)).**
 
-## Team 成员简介
+## Team
 
-- 武钰淞 @ `bqsgwys`：清华大学电子系大二在读，大腿+大佬
-- 张亦弛 @ `YC-Vertex`：清华大学微纳电子系大二在读，软硬双修，软件开发经历相对较少，高中参加过许多科创hackathon
-- 马呈翔 @ `mcxthuee`：清华大学微纳电子系大二在读，发展方向未定。对软件和硬件都比较感兴趣，希望能通过此次hackathon学习到更多的知识，和大佬们做朋友~
+- Wu Yusong `@bqsgwys` A THU sophomore majored in Electronic Engineering
+- Zhang Yichi `@YC-Vertex` A THU sophomore majored in Microelectronic Engineering
+- Ma Chengxiang `@mcxthuee` A THU sophomore majored in Microelectronic Engineering
 
-## Problem Statement 问题陈述
+## Problem Statement
 
-近年来，人工智能相关技术极度火爆，我们希望通过分析Artificial Intelligence & Machine Learning相关论文的内容，将人工智能领域的关键词热度演变可视化，以达到AI技术趋势分析与展示的目标。
+In recent years, Artificial Intelligence has reached a feverish pitch. We hope to visualize the rises and falls of AIML hot topics via Analyzing AIML-related papers. Thus illustrates the ever-changing trend of AI.
 
-## Data Sources 数据集源
+## Data Sources
 
-论文来自主办方所给数据集，即来自于arxiv收录的cs:AI、cs:CV、cs:CL、cs:LG、stat:ML等领域的英文文献共4343篇。所有数据文件均为pdf格式，且内容均与AI&ML相关。具体包含题目、作者、学校机构、发表日期等基础信息内容，以及论文正文内容。
+The database of papers is given by the organizer of the hackathon.
+All the papers, amounted to 4334, are from the public database of _arXiv_, distributed in the categories including cs:AI (Artificial Intelligence), cs:CV (Computer Vision), cs:CL (Computer Linguistics), cs:LG (Machine Learing in CST) and stat:ML (Machine Learing in Statistics).
+All papers are presented in PDF format.
+They contains basic infomation such as the title, the authors, the institution, the date of submission, etc., as well as the main body of the paper.
 
-关键词信息来源于WildML、Wikipedia、Google Developers三个渠道，具体连接为：
+The keywords are from the glossary edited by _WildML_, _Wikipedia_ and _Google Developers_. Links are shown below.
 
 - Deep Learning Glossary - WildML: http://www.wildml.com/deep-learning-glossary/
 - Glossary of AI - Wikipedia: https://en.wikipedia.org/wiki/Glossary_of_artificial_intelligence
-- 机器学习术语表 - Google Developers: https://developers.google.com/machine-learning/glossary/
+- Machine Learning Glossary - Google Developers: https://developers.google.com/machine-learning/glossary/
 
-## Design & Methodology 设计与方法论
+## Design & Methodology
 
 > Less is more. &emsp; -- Ludwig Mies van der Rohe
 
-**方法论**：我们希望通过最直接、有效、快速的方式获得所需信息，而非最炫技的方式。
+**Methodology**: Direct, efficient and effective, rather than being grandiose.
 
-**方案流程架构**：将问题拆分为四部分：pdf内容的提取、关键词的提取、关键词匹配查找、数据可视化。
+**Design**: Our work was separated into four splits - pdf content extraction, keyword extraction, keyword matching, data visualization.
 
-- PDF内容的提取：主要提取论文的基础信息（论文编号、分类、时间）以及正文内容，使用`PyPDF2`和`pdfminer`进行数据提取，转换为文本文件以方便后续的字符数据处理。其过程中，对于无法正常打开的文件、无法识别论文基础信息的文件，分别有特殊标记处理。
-- 关键词的提取：
-- 关键词匹配查找：
-- 数据可视化：
+- PDF content extraction: Use `PyPDF2` and `pdfminer` module to convert pdf files into plin text, making it convinent for subsequent character data processing. Chiefly extracted main bodies of the papers and their basic info, namely its arXiv index, arXiv category info, and time of composition. During this process, for those files whose opening was failed or basic info was not avaliable, we tagged them fail and had treatments for them.
+- Keyword extraction:
+- Keyword matching:
+- Data visualization
 
-## Algorithm & Model 算法与模型
+## Algorithm & model
 
-## Result 分析结果
+## Result
