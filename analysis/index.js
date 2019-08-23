@@ -4,7 +4,7 @@ require("./infoExtraction")().then((info) => {
   var minday = 100000000000;
 
   for (article in info) {
-    info[article].day = Math.round(new Date(info[article].date + " GMT") / 86400000);
+    info[article].day = Math.round(new Date(info[article].date) / 86400000);
     minday = Math.min(minday, info[article].day);
     maxday = Math.max(minday, info[article].day);
   }
@@ -12,7 +12,8 @@ require("./infoExtraction")().then((info) => {
   for (articles in info) {
     info[articles].day -= minday;
   }
-  trend.minday = (new Date(minday * 86400000).toDateString());
+  trend.maxDay = maxday - minday;
+  trend.startDate = (new Date(minday * 86400000)).toLocaleDateString();
 
   for (keyword in keywords) {
     trend[keyword] = {};

@@ -54,6 +54,7 @@
               aria-hidden="true"
               id={id + "Close"}
             />
+
             <div className="card-body">
               <canvas id={id + "Canvas"} width="320" height="240" />
               <div className="form-row align-items-center">
@@ -84,22 +85,133 @@
           </div>
         );
       }
+      const draw = (set, domContainer) => {
+        ReactDOM.render(<div>{set}</div>, domContainer);
+      };
+    </script>
+    <script type="text/javascript">
+      const randC = () => Math.round(Math.random() * 150) + 50;
+      const getChart = (database, name) => {
+        const raw = {
+          ...database[name],
+          maxDay: database.maxDay,
+          startDate: database.startDate
+        };
+        var x = [];
+        for (let i = 0; i <= raw.maxDay; i++) {
+          x.push(i);
+        }
+        let added = [raw["0"] ? raw["0"] : 0];
+        for (let i = 1; i <= raw.maxDay; i++) {
+          added[i] = added[i - 1] + (raw["" + i] ? raw["" + i] : 0);
+        }
+        return {
+          labels: x.map(a =>
+            new Date(
+              new Date(raw.startDate).getTime() + a * 86400 * 1000
+            ).toLocaleDateString()
+          ),
+          datasets: [
+            {
+              label: "累计论文数量",
+              data: x.map(a => added[a]),
+              backgroundColor: [`rgba(${randC()}, ${randC()}, ${randC()}, .2)`],
+              borderColor: [`rgba(${randC()}, ${randC()}, ${randC()}, .7)`],
+              borderWidth: 2
+            }
+          ]
+        };
+      };
+      const similar = (str1, str2) => {
+        //Levenshtein
+        let len1 = str1.length;
+        let len2 = str2.length;
+        //建立上面说的数组，比字符长度大一个空间
+        let dif = [];
+
+        //赋初值，步骤B。
+        for (let a = 0; a <= len1; a++) {
+          dif[a] = [];
+          dif[a][0] = a;
+        }
+        for (let a = 0; a <= len2; a++) {
+          dif[0][a] = a;
+        }
+        //计算两个字符是否一样，计算左上的值
+        let temp;
+        for (let i = 1; i <= len1; i++) {
+          for (let j = 1; j <= len2; j++) {
+            if (str1[i - 1] == str2[j - 1]) {
+              temp = 0;
+            } else {
+              temp = 1;
+            }
+            //取三个值中最小的
+            dif[i][j] = Math.min(
+              dif[i - 1][j - 1] + temp,
+              dif[i][j - 1] + 1,
+              dif[i - 1][j] + 1
+            );
+          }
+        }
+
+        //计算相似度
+        let similarity =
+          1 - dif[len1][len2] / Math.max(str1.length, str2.length);
+
+        return similarity;
+      };
     </script>
   </head>
 
   <body>
     <style>
+      .background {
+        width: 100vw;
+        position: absolute;
+        top: 50vh;
+        left: 0;
+        z-index: -1000000;
+        font-size: 25vh;
+        font-weight: bolder;
+        color: rgba(0, 0, 0, 0.6);
+        opacity: 0.5;
+        text-align: center;
+        transform: translateY(-70%);
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .fas.fa-angle-down {
+        position: absolute;
+        font-size: 2rem;
+        top: 0px;
+        left: 10px;
+        opacity: 0.7;
+      }
+      .fas.fa-angle-up {
+        position: absolute;
+        font-size: 2rem;
+        top: 0px;
+        left: 35px;
+        opacity: 0.7;
+      }
       #plus {
         position: absolute;
-        width: 3em;
-        height: 3em;
+        width: 4em;
+        height: 4em;
         border-radius: 50%;
         opacity: 0.5;
         padding: 0;
-        bottom: 5px;
-        right: 5px;
+        bottom: 5vw;
+        right: 5vw;
       }
-
+      .fas.fa-chart-line {
+        font-size: 2em;
+      }
+      .btn.btn-primary.mb-0 {
+        opacity: 0.85;
+        padding: 0.4rem 1.5rem;
+      }
       .btn.btn-outline-info.waves-effect.move {
         position: absolute;
         width: 2em;
@@ -111,11 +223,16 @@
         right: 5px;
       }
 
+      .fas.fa-plus.large {
+        font-size: 2em;
+      }
+
       .fas.fa-times.close {
         position: absolute;
-        top: 7px;
-        right: 7px;
+        top: 10px;
+        right: 10px;
         opacity: 0.7;
+        font-size: 2rem;
       }
 
       .card {
@@ -123,42 +240,75 @@
         position: absolute;
         left: 100px;
         top: 100px;
+        background: rgba(255, 255, 255, 0.7);
       }
 
       canvas {
         margin: auto;
         display: block;
       }
+      body {
+      }
     </style>
 
-    <script type="text/babel">
-      $(document).ready(() => {
-        const set = [""];
-        var move = {};
+    <script type="text/javascript">
+      const set = [""];
+      $(document).ready(async () => {
+        const database = await $.getJSON("data/result.json");
+        const canvas = [];
+        let move = null;
         let i = 0;
         $("#plus").click(e => {
           const domContainer = document.querySelector("#container");
           set.push(card(++i + ""));
-          ReactDOM.render(<div>{set}</div>, domContainer);
-
+          draw(set, domContainer);
+          canvas[i] = new Chart(
+            document.getElementById(`${i}Canvas`).getContext("2d"),
+            {
+              type: "line",
+              data: {},
+              options: {
+                responsive: true
+              }
+            }
+          );
+          $(`#${i}Button`).click(e => {
+            const id = parseInt(e.currentTarget.id);
+            const name = $(`#${id}Input`).val();
+            if (name) {
+              let sim = [];
+              for (keyword in database) {
+                sim.push({ keyword, similarity: similar(name, keyword) });
+              }
+              sim = sim.sort((a, b) => {
+                return b.similarity - a.similarity;
+              });
+              console.log(sim[0]);
+              $(`#${id}Input`).val(sim[0].keyword);
+              ctx = document.getElementById(`${id}Canvas`).getContext("2d");
+              ctx.height = ctx.height;
+              canvas[id].data = getChart(database, sim[0].keyword);
+              canvas[id].update();
+            }
+          });
           $(`#${i}Close`).click(e => {
             let x = parseInt(e.currentTarget.id);
             set[x] = null;
-            ReactDOM.render(<div>{set}</div>, domContainer);
+            draw(set, domContainer);
           });
           $(`#${i}Card`).mousedown(e => {
-            if (e.target.id === "movex") move[e.currentTarget.id] = true;
+            if (e.target.id === "movex") move = e.currentTarget.id;
           });
-          $(`#${i}Card`).mousemove(e => {
-            if (move[e.currentTarget.id]) {
-              let that = $("#" + e.currentTarget.id);
+          $(document).mousemove(e => {
+            if (move) {
+              let that = $("#" + move);
               let top = e.pageY - 340 + "px";
               let left = e.pageX - 380 + "px";
               that.css({ top, left });
             }
           });
           $(document).mouseup(() => {
-            move = {};
+            move = null;
           });
         });
       });
@@ -167,7 +317,8 @@
     <div id="container" style="width:100vw; height:100vh"></div>
 
     <button type="button" class="btn btn-outline-info waves-effect" id="plus">
-      <i class="fas fa-plus" aria-hidden="true"></i>
+      <i class="fas fa-plus large" aria-hidden="true"></i>
     </button>
+    <div class="background">KARMA</div>
   </body>
 </html>

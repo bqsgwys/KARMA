@@ -1,5 +1,6 @@
 {
-  "minday": "Mon May 06 2019",
+  "maxDay": 81,
+  "startDate": "2019-5-6",
   "attention mechanism": {
     "11": 1,
     "17": 2,
