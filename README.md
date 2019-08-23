@@ -4,9 +4,9 @@ Entry of VMW-THU-Hackathon @ Aug 2019
 
 Topic #1: Trend analysis of AI techniques
 
-编程语言：`Javascript` & `Python`
+编程语言：`Javascript`, `Python`, `HTML` & `CSS`
 
-本文件为项目的总体报告，具体技术细节（包括环境与依赖的配置、文件目录结构、文件使用方法、函数接口等）请详见技术文档。
+本文件为项目的总体报告，具体技术细节（包括环境与依赖的配置、文件目录结构、文件使用方法、函数接口等）请详见技术文档`KARMA Reference.md`。
 
 ## Team 成员简介
 
@@ -41,6 +41,6 @@ Topic #1: Trend analysis of AI techniques
 - 关键词匹配查找：
 - 数据可视化：
 
-## Algorithm & model 算法与模型
+## Algorithm & Model 算法与模型
 
 ## Result 分析结果

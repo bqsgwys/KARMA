@@ -27,6 +27,7 @@ require("./infoExtraction")().then((info) => {
       if (!trend[keyword][day]) trend[keyword][day] = 0;
       trend[keyword][day]++;
     }
+    trend[keyword].total = keywords[keyword].length;
   }
   const fs = require("fs");
   fs.writeFileSync("../result.json", JSON.stringify(trend, "", "  "));
