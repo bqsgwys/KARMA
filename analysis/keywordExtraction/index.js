@@ -1,8 +1,7 @@
 const path = require("path")
 const fs = require("fs");
 
-const prefix = require("../config").dataList.map(x => path.join(__dirname, x));
-
+const prefix = require("../config").dataList;
 const files = prefix.map(x => require("./filestats")(x));
 const dictionary = require("./dict");
 const readFile = require("./readfile");

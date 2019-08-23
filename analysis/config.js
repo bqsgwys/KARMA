@@ -1,15 +1,18 @@
 const path = require("path");
-const rootDir = path.join(__dirname, "..");
+const rootDir = path.join(__dirname, "../");
 /****************/
 /*Configure Here*/
 /****************/
 
 const infoPrefix = "./rawdata/info/"; //directory of info files
 const infoFilename = [
-  "info",
+  "info0",
+  "info1",
+  "info2",
 ]; //name of info files
 const dataPrefix = [
-  "./rawdata/text/",
+  "./rawdata/text/pdfminer/",
+  "./rawdata/text/pypdf/",
 ] //name of info files
 
 module.exports = {
