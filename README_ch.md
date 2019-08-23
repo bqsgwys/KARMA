@@ -44,6 +44,13 @@ Topic #1: Trend analysis of AI techniques
 
 ## Algorithm & Model 算法与模型
 
+```code
+  // Here's nothing left,
+  # for it's not nessesary
+  <!--to use any kind of algorithm-->
+  /* or any kind of model. */
+```
+
 ## Result 分析结果
 
 ### AIML热词趋势分析

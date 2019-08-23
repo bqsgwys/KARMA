@@ -65,7 +65,7 @@ The keywords are from the glossary edited by _WildML_, _Wikipedia_ and _Google D
   // Here's nothing left,
   # for it's not nessesary
   <!--to use any kind of algorithm-->
-  /* or any kind of model.*/
+  /* or any kind of model. */
 ```
 
 ## Result

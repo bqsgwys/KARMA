@@ -10,10 +10,10 @@ As a technical reference documentation, basic information of this project is not
 
 ## Environment Configuration
 
-1. *(optional_2)* Make sure you have your `Python 3 >= 3.7` successfully installed, and `pip` up to date.
-2. *(optional_1)* Download and config [swig](http://www.swig.org/download.html). Mind that windows user should download swigwin package, which includes a prebuilt executable, instead of swig.
-3. *(optional_2)* Install `PyPDF2` module via `pip install pypdf2`.
-4. *(optional_1)* Install `pdfminer` module via `pip install pdfminer`.
+1. **(optional_2)** Make sure you have your `Python 3 >= 3.7` successfully installed, and `pip` up to date.
+2. **(optional_1)** Download and config [swig](http://www.swig.org/download.html). Mind that windows user should download swigwin package, which includes a prebuilt executable, instead of swig.
+3. **(optional_2)** Install `PyPDF2` module via `pip install pypdf2`.
+4. **(optional_1)** Install `pdfminer` module via `pip install pdfminer`.
 5. Make sure you have your `Node.js >= 10.16.3 LTS` successfully installed, and `yarn` up to date,
 6. `yarn install`the Node.js Dependencies.
 7. Make sure your web broswer supports `ECMA2017`(`Firefox >= 67; Chrome >=75; Opera>=62; Safari>= 12`). Edge and IE MAY NOT display normally.
@@ -23,6 +23,9 @@ As a technical reference documentation, basic information of this project is not
 
 ## Usage
 
+To use the same dataset as we do, download [raw_data]() and unzip it to root directory.
+Then you may able to skip *pdf file content extraction* part and step 1 of *keywords matching*.
+
 ### pdf file content extraction
 
 - Run `pdfExtract/GetPaperInfo.py` to extract paper basic info from target directory. Output files will be saved as `rawdata/info/info.json`.
@@ -30,15 +33,15 @@ As a technical reference documentation, basic information of this project is not
 
 ### creating keywords dictionary
 
-- Target keywords already exist in `analysis/keywordExtraction/dict.json`. Could be replaced by user-desired keywords.
+- Target keywords already exist in `analysis/keywordExtraction/dict.json`. Could be replaced by user-defined keywords.
 
 ### keywords matching
 
-- Configure the configuration file `analysis/config.js`.
+1. Configure the configuration file `analysis/config.js`.
   - `infoPrefix` should be the directory containing the info data.
   - `infoList` should be the filename of the info data files.
   - `dataList` should be the directories containing the text-files of papers.
-- Run `node index.js` to generate the `result.json` in root directory of the project. Network is required.
+2. Run `node index.js` to generate the `result.json` in root directory of the project. Network is required.
 
 ### visualization
 
@@ -76,7 +79,7 @@ KARMA                               //
 ├─ pdfExtract                       // extraction of paper info and plain texts from pdf files
 │  ├─ GetPaperInfo.py               // extraction of paper info
 │  ├─ Pdf2Txt_PyPDF2.py             // extraction of plain text, more accurate than pdfminder but does not contain whitespaces
-│  ├─ fbasic.py                     // helper methods, such as checking file path availability and getting iteration list of all pdf files
+│  ├─ fbasic.py                     // helper methods
 │  └─ pdf_to_txt_pdfminer.py        // extraction of plain text, contains thorough info but is slower and less accurate
 ├─ rawinfo                          // paper data is expected to be exported and stored here
 │  ├─ info                          // paper basic info is expected to be exported and stored here
