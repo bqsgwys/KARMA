@@ -3,7 +3,7 @@
 data
 txt_all_pypdf
 node_modules
-rawdata
+rawdata/text
 
 
 *__pycache__
