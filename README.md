@@ -59,7 +59,14 @@ The keywords are from the glossary edited by _WildML_, _Wikipedia_ and _Google D
   We use website to present the visualized data for its several advantages including fewer dependencies, cross-platform compatibility and its good performance with JSON data.
   Also, Material Design is another factor that makes we to the decision.
 
-## Algorithm & model
+## Algorithm & Model
+
+```code
+  // Here's nothing left,
+  # for it's not nessesary
+  <!--to use any kind of algorithm-->
+  /* or any kind of model.*/
+```
 
 ## Result
 
@@ -71,17 +78,17 @@ For the given dataset of papers, keywords matching results showed great represen
 
 ### Self-evaluation on project solution
 
-- [x] **Quest Completion**: 
-  The project meets every single goals given in the instructions.
-  Nevertheless, due to the high density and centrality of the published time of target papers, the results failed to give a long-term insight on the fluctuation of AIML keywords.
-- [x] **User Friendliness**: 
-  Except pdf2txt part need some manual operations and manipulations, other functions require only a single click. So it is of great user fiendliness.
+- [x] **Quest Completion**:
+      The project meets every single goals given in the instructions.
+      Nevertheless, due to the high density and centrality of the published time of target papers, the results failed to give a long-term insight on the fluctuation of AIML keywords.
+- [x] **User Friendliness**:
+      Except pdf2txt part need some manual operations and manipulations, other functions require only a single click. So it is of great user fiendliness.
 - [ ] **Running Efficiency**:
-  It is relatively slow to extract all needed information from over 4000 pdf files, and we seldom did any optimization to this.
-  When the project was reaching its finale, we figured out that doing keywords matching right after pdf extraction, instead of saving extracted texts to txt files and read them again, would probably save some time and boost the efficiency. 
-  However, facing the forthcoming deadline, we decided not to make big changes to our project.
+      It is relatively slow to extract all needed information from over 4000 pdf files, and we seldom did any optimization to this.
+      When the project was reaching its finale, we figured out that doing keywords matching right after pdf extraction, instead of saving extracted texts to txt files and read them again, would probably save some time and boost the efficiency.
+      However, facing the forthcoming deadline, we decided not to make big changes to our project.
 - [x] **Exception Handling**:
-  Some file failure detections and treatments are available, but sometimes it still requires human interventions.
+      Some file failure detections and treatments are available, but sometimes it still requires human interventions.
 - [x] **Cross-Platform Compatibility**:
-  We used high-cross-platform-compatibility languages, for instance HTML&CSS, JavaScript, and Python.
-  In addition, we have done a considerable amount of work in reducing user configuration complexity.
+      We used high-cross-platform-compatibility languages, for instance HTML&CSS, JavaScript, and Python.
+      In addition, we have done a considerable amount of work in reducing user configuration complexity.
